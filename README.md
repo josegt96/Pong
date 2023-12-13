@@ -1,4 +1,4 @@
-# Pong Game Readme
+# Pong Game Readme.
 
 This is a simple implementation of the classic Pong game using C++ and the Visual Studio IDE (2022). The game utilizes the console for rendering and keyboard input.
 
