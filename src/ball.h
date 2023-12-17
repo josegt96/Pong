@@ -3,6 +3,8 @@
 #ifndef BALL_H
 #define BALL_H
 
+#include <SDL2/SDL_render.h>
+
 enum eDir
 {
     STOP = 0,
@@ -30,13 +32,15 @@ public:
 
     void randomDirection();
 
-    int getX() const;
+    int getX();
 
-    int getY() const;
+    int getY();
 
-    eDir getDirection() const;
+    eDir getDirection();
 
     void Move();
+
+    void Draw(SDL_Renderer *renderer);
 };
 
 #endif // BALL_H

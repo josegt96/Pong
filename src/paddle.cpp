@@ -15,6 +15,16 @@ cPaddle::cPaddle(int posX, int posY) : cPaddle()
     y = posY;
 }
 
+void cPaddle::Draw(SDL_Renderer *renderer)
+{
+    // Set the drawing color to white
+    SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+
+    // Draw the paddle using SDL_RenderDrawRect
+    SDL_Rect rect = {x, y, 20, 100};
+    SDL_RenderDrawRect(renderer, &rect);
+}
+
 void cPaddle::Reset()
 {
     x = originalX;

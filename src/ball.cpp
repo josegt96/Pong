@@ -1,10 +1,10 @@
 // ball.cpp
 
 #include "ball.h"
-#include <stdlib.h>
+#include <iostream>
 
 cBall::cBall(int posX, int posY)
-    : originalX(posX), originalY(posY), x(posX), y(posY), direction(STOP)
+    : originalX(posX), originalY(posY), x(posX), y(posY), direction(RIGHT)
 {
 }
 
@@ -12,7 +12,16 @@ void cBall::Reset()
 {
     x = originalX;
     y = originalY;
-    direction = STOP;
+    direction = RIGHT;
+}
+
+void cBall::Draw(SDL_Renderer *renderer)
+{
+    // Set the drawing color to white
+    SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
+    // Draw the paddle using SDL_RenderDrawRect
+    SDL_Rect rect = {x, y, 20, 20};
+    SDL_RenderDrawRect(renderer, &rect);
 }
 
 void cBall::changeDirection(eDir d)
@@ -25,23 +34,24 @@ void cBall::randomDirection()
     direction = static_cast<eDir>((rand() % 6) + 1);
 }
 
-int cBall::getX() const
+int cBall::getX()
 {
     return x;
 }
 
-int cBall::getY() const
+int cBall::getY()
 {
     return y;
 }
 
-eDir cBall::getDirection() const
+eDir cBall::getDirection()
 {
     return direction;
 }
 
 void cBall::Move()
 {
+    std::cout << direction << std::endl;
     switch (direction)
     {
     case STOP:

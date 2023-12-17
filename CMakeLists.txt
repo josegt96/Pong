@@ -9,6 +9,12 @@ set(SOURCE_FILES
     src/ball.cpp
     src/paddle.cpp
 )
-
 # Add executable target
 add_executable(pong ${SOURCE_FILES})
+
+# Find SDL2
+find_package(SDL2 REQUIRED)
+# Include SDL2 headers
+include_directories(${SDL2_INCLUDE_DIRS})
+# Link against SDL2
+target_link_libraries(pong ${SDL2_LIBRARIES})
