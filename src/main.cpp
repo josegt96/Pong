@@ -9,13 +9,11 @@
 class cGameManger
 {
 private:
-	int width, height, multiplier;
-	int score1, score2;
+	int width, height, multiplier, score1, score2;
 	char up1, down1, up2, down2;
 	bool quit;
 	cBall *ball;
-	cPaddle *player1;
-	cPaddle *player2;
+	cPaddle *player1, *player2;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 
