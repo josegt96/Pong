@@ -1,8 +1,10 @@
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <chrono>
+#include <thread>
 
-#include "ball.h"
-#include "paddle.h"
+#include "entity/ball/ball.h"
+#include "entity/paddle/paddle.h"
 
 class cGameManger
 {
@@ -27,11 +29,11 @@ public:
 		down2 = 'k';
 		score1 = score2 = 0;
 		multiplier = 20;
-		width = w * multiplier;
-		height = h * multiplier;
-		ball = new cBall(width / 2, height / 2);
-		player1 = new cPaddle(1, height / 2 - 3);
-		player2 = new cPaddle(width - multiplier, height / 2 - multiplier / 2);
+		width = w;
+		height = h;
+		ball = new cBall(w / 2, h / 2);
+		player1 = new cPaddle(1, h / 2 - 2);
+		player2 = new cPaddle(w - 2, h / 2 - 2);
 
 		// Initialize SDL
 		if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -42,7 +44,7 @@ public:
 		}
 
 		// Create window and renderer
-		window = SDL_CreateWindow("Pong", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow("Pong", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width * multiplier, height * multiplier, SDL_WINDOW_SHOWN);
 		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 		if (!window || !renderer)
@@ -138,15 +140,13 @@ public:
 
 		// Left Paddle
 		for (int i = 0; i < 4; i++)
-			if (ballx == player1x + 1)
-				if (bally == player1y + i)
-					ball->changeDirection((eDir)((rand() % 3) + 4));
+			if (ballx == player1x + 1 && bally == player1y + i)
+				ball->changeDirection((eDir)((rand() % 3) + 4));
 
 		// Right Paddle
 		for (int i = 0; i < 4; i++)
-			if (ballx == player2x - 1)
-				if (bally == player2y + i)
-					ball->changeDirection((eDir)((rand() % 3) + 1));
+			if (ballx == player2x - 1 && bally == player2y + i)
+				ball->changeDirection((eDir)((rand() % 3) + 1));
 
 		// Bottom Wall
 		if (bally == height - 1)
@@ -172,6 +172,7 @@ public:
 			Draw();
 			Input();
 			Logic();
+			std::this_thread::sleep_for(std::chrono::milliseconds(50));
 		}
 	}
 };

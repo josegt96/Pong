@@ -6,8 +6,7 @@
 class cPaddle
 {
 private:
-    int x, y;
-    int originalX, originalY;
+    int x, y, originalX, originalY;
 
 public:
     cPaddle();

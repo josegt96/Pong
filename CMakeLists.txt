@@ -6,8 +6,8 @@ project(Pong)
 # Add your source files
 set(SOURCE_FILES
     src/main.cpp
-    src/ball.cpp
-    src/paddle.cpp
+    src/entity/ball/ball.cpp
+    src/entity/paddle/paddle.cpp
 )
 # Add executable target
 add_executable(pong ${SOURCE_FILES})

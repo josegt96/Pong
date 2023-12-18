@@ -21,7 +21,7 @@ void cPaddle::Draw(SDL_Renderer *renderer)
     SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 
     // Draw the paddle using SDL_RenderDrawRect
-    SDL_Rect rect = {x, y, 20, 100};
+    SDL_Rect rect = {x * 20, y * 20, 20, 80};
     SDL_RenderDrawRect(renderer, &rect);
 }
 
