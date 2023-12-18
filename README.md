@@ -1,57 +1,70 @@
-# Pong Game Readme.
+# Pong Game
 
-This is a simple implementation of the classic Pong game using C++ and the Visual Studio IDE (2022). The game utilizes the console for rendering and keyboard input.
+## Overview
 
-## Getting Started
+This project implements a simple Pong game using C++ and the SDL2 library. The game consists of a ball and two paddles, and the objective is to score points by hitting the ball past the opponent's paddle.
 
-To run the game, follow these steps:
+## How to Build
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/josegt96/Pong
-   ```
+To build the project, follow these steps:
 
-2. **Open Project in Visual Studio:**
-   - Open Visual Studio 2022.
-   - Choose `Open a project or solution` and select the `pong-game.sln` file.
+1. Make sure `SDL2` and `CMAKE`  is installed on your system.
 
-3. **Build and Run:**
-   - Build the solution by pressing `Ctrl + Shift + B`.
-   - Run the game by pressing `F5` or clicking the "Start Debugging" button.
+```bash
+sudo pacman -S sdl2 cmake
+```
+2. Create a build directory and build the project `make`
 
-## Controls
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
 
-- Player 1 (Left Paddle):
-  - Move Up: `w`
-  - Move Down: `s`
+## Run the Game
 
-- Player 2 (Right Paddle):
-  - Move Up: `i`
-  - Move Down: `k`
+After building the project, run the executable:
 
-- Quit the game: `q`
+```bash
+./pong
+```
 
-## Gameplay
+This will generate the "pong" executable in the build directory.
 
-- The game starts with the ball moving randomly.
-- Use the paddle controls to prevent the ball from passing your side.
-- If the ball passes your paddle, the opponent scores a point.
-- The game continues until you choose to quit (`q`).
+## How to Play
 
-## Code Structure
+- **Player 1:**
+  - Move Up: W
+  - Move Down: S
 
-- `cBall`: Class representing the ball in the game.
-- `cPaddle`: Class representing a paddle.
-- `cGameManager`: Class managing the game logic, including scoring, drawing, and input handling.
-- `main()`: The entry point of the program, creating an instance of `cGameManager` and running the game loop.
+- **Player 2:**
+  - Move Up: I
+  - Move Down: K
 
-## Development Environment
+- **Quit:**
+  - Q
 
-- Language: C++
-- IDE: Visual Studio 2022
+## Project Structure
+
+The project is organized into three main classes:
+
+- **Ball Class (`ball.h`):** Represents the ball in the Pong game.
+
+- **Paddle Class (`paddle.h`):** Represents a paddle in the Pong game.
+
+- **Game Manager Class (`main.cpp`):** Manages the game state, input, rendering, and logic.
+
+## Dependencies
+
+- [SDL2 Library](https://www.libsdl.org/)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-- This game was created as a learning project and is based on classic Pong gameplay.
+Special thanks to the SDL2 development team for their contributions to the gaming community.
 
-Feel free to explore, modify, and extend the code for your own learning and enjoyment. If you have any questions or improvements, please open an issue or submit a pull request. Enjoy playing Pong!
+Enjoy playing Pong!
