@@ -3,8 +3,13 @@
 #include "ball.h"
 
 cBall::cBall(int posX, int posY)
-    : originalX(posX), originalY(posY), x(posX), y(posY), direction(RIGHT)
 {
+    x = posX;
+    y = posY;
+    originalX = posX;
+    originalY = posY;
+    direction = RIGHT;
+    color = {0, 255, 255};
 }
 
 void cBall::Reset()
@@ -14,13 +19,9 @@ void cBall::Reset()
     direction = RIGHT;
 }
 
-void cBall::Draw(SDL_Renderer *renderer)
+std::list<PointWithColor> cBall::getPixels()
 {
-    // Set the drawing color to white
-    SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
-    // Draw the paddle using SDL_RenderDrawRect
-    SDL_Rect rect = {x * 20, y * 20, 20, 20};
-    SDL_RenderDrawRect(renderer, &rect);
+    return {{{x, y}, color}};
 }
 
 void cBall::changeDirection(eDir d)

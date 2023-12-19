@@ -2,30 +2,27 @@
 
 #include "paddle.h"
 
-cPaddle::cPaddle()
-{
-    x = y = 0;
-}
-
-cPaddle::cPaddle(int posX, int posY) : cPaddle()
+cPaddle::cPaddle(int posX, int posY)
 {
     originalX = posX;
     originalY = posY;
     x = posX;
     y = posY;
+    size = 4;
+    color = {255, 0, 255};
 }
 
-void cPaddle::Draw(SDL_Renderer *renderer)
+std::list<PointWithColor> cPaddle::getPixels()
 {
-    // Set the drawing color to white
-    SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+    std::list<PointWithColor> pixels;
 
     // Draw the paddle using SDL_RenderDrawRect
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < size; i++)
     {
-        SDL_Rect rect = {x * 20, (y + i) * 20, 20, 20};
-        SDL_RenderDrawRect(renderer, &rect);
+        pixels.push_back({{x, y + i}, color});
     }
+
+    return pixels;
 }
 
 void cPaddle::Reset()
@@ -52,4 +49,9 @@ void cPaddle::moveUp()
 void cPaddle::moveDown()
 {
     y++;
+}
+
+int cPaddle::getSize()
+{
+    return size;
 }

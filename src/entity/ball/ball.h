@@ -1,27 +1,17 @@
 // ball.h
+#include "../../struc.h"
+#include <list>
+#include <stdlib.h>
 
 #ifndef BALL_H
 #define BALL_H
 
-#include <SDL2/SDL_render.h>
-
-enum eDir
-{
-    STOP = 0,
-    LEFT = 1,
-    UPLEFT = 2,
-    DOWNLEFT = 3,
-    RIGHT = 4,
-    UPRIGHT = 5,
-    DOWNRIGHT = 6
-};
-
 class cBall
 {
 private:
-    int x, y;
-    int originalX, originalY;
+    int x, y, originalX, originalY;
     eDir direction;
+    ColorRGB color;
 
 public:
     cBall(int posX, int posY);
@@ -40,7 +30,7 @@ public:
 
     void Move();
 
-    void Draw(SDL_Renderer *renderer);
+    std::list<PointWithColor> getPixels();
 };
 
 #endif // BALL_H

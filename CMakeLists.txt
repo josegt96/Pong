@@ -8,10 +8,10 @@ set(SOURCE_FILES
     src/main.cpp
     src/entity/ball/ball.cpp
     src/entity/paddle/paddle.cpp
+    src/entity/pong/pong.cpp
 )
 # Add executable target
 add_executable(pong ${SOURCE_FILES})
-
 # Find SDL2
 find_package(SDL2 REQUIRED)
 # Include SDL2 headers
